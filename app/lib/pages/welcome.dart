@@ -39,7 +39,9 @@ class _WelcomeState extends State<Welcome> {
                 width: 170,
                 margin: EdgeInsets.only(top:40),
                 child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.of(context).pushNamed('/articles');
+                  },
                   child: Text('Read Our Articles'),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
