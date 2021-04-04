@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class RegistrationSerializer(serializers.ModelSerializer):
 
-    password2 = serializers.CharField(style=['input_type':'password'], write_only=True)
+    password2 = serializers.CharField(style={'input_type':'password'}, write_only=True)
 
     class Meta:
         model = Account
@@ -18,21 +18,21 @@ class RegistrationSerializer(serializers.ModelSerializer):
             'password': {'write_only': True}
         }
 
-        def save(self):
-            account = Account(
-                email = self.validated_data['email'],
-                username = self.validated_data['username'],
-                first_name=self.validated_data['first_name'],
-                last_name = self.validated_data['last_name']
-            )
+    def save(self):
+        account = Account(
+            email = self.validated_data['email'],
+            username = self.validated_data['username'],
+            first_name=self.validated_data['first_name'],
+            last_name = self.validated_data['last_name']
+        )
 
-            password = self.validated_data['password']
-            password2 = self.validated_data['password2']
+        password = self.validated_data['password']
+        password2 = self.validated_data['password2']
 
-            if password != password2:
-                raise serializers.ValidationError({'password': 'passwords do not match'})
+        if password != password2:
+            raise serializers.ValidationError({'password': 'passwords do not match'})
 
-            account.set_password(password)
-            account.save()
+        account.set_password(password)
+        account.save()
 
-            return account
+        return account
