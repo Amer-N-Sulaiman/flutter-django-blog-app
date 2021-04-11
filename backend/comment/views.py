@@ -21,3 +21,16 @@ class CommentsList(APIView):
         serializer = CommentSerializer(comments, many=True)
 
         return Response(serializer.data, status.HTTP_200_OK)
+
+    def post(self, request, id):
+        article = Article.objects.get(pk=id)
+        author = request.user
+
+        serializer = CommentSerializer(data=request.data)
+        serializer.author = author
+        serializer.article = article
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

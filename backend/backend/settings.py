@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     'account.apps.AccountConfig',
     'article.apps.ArticleConfig',
-    'comment.apps.CommentConfig'
+    'comment.apps.CommentConfig',
 ]
 
 MIDDLEWARE = [
