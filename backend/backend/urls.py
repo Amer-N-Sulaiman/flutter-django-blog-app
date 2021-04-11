@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('authentication/', include(('account.urls', 'account'), namespace='account')),
     path('article/', include(('article.urls', 'article'), namespace='article')),
+    path('comment/', include(('comment.urls', 'comment'), namespace='comment')),
 ]

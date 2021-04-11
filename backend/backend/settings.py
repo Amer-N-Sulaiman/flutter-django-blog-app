@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'account.apps.AccountConfig',
-    'article.apps.ArticleConfig'
+    'article.apps.ArticleConfig',
+    'comment.apps.CommentConfig'
 ]
 
 MIDDLEWARE = [
