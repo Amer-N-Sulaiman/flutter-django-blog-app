@@ -24,16 +24,16 @@ class OpenList(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-    def post(self, request):
-        serializer = ArticleSerializer(data=request.data)
-        account1 = Account.objects.get(pk=4)
-        serializer.author = account1
-        if serializer.is_valid():
-            print(serializer.data)
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def post(self, request):
+    #     serializer = ArticleSerializer(data=request.data)
+    #     account1 = Account.objects.get(pk=4)
+    #     serializer.author = account1
+    #     if serializer.is_valid():
+    #         print(serializer.data)
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     else:
+    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AuthorList(APIView):

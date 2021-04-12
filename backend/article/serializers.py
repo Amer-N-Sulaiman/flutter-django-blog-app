@@ -11,6 +11,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         article = Article(
             title = self.validated_data['title'],
             body = self.validated_data['body'],
+            image = self.validated_data['image'],
             author = self.author
         )
 

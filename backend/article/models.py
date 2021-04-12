@@ -7,4 +7,5 @@ class Article(models.Model):
     title = models.CharField(max_length=100, unique=True) # I find it bad to have two articles with the exact same names
     body = models.TextField(max_length=10000)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=None)
+    image = models.ImageField(null=True, blank=True)
     date_added = models.DateTimeField(auto_now=True)
