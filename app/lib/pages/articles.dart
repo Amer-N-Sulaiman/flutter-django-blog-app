@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app/api/articleApi.dart';
+import 'package:app/pages/details.dart';
 
 class Articles extends StatefulWidget {
   @override
@@ -90,18 +91,30 @@ class _ArticlesState extends State<Articles> with TickerProviderStateMixin{
                 )
             ],),
               
-            trailing: Container(
-              width: 40,
-              height: 40,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: Image.asset('images/${articlesP.articles[i].img}',
-                fit: BoxFit.cover)
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey[300]),
-                color: Colors.white,
-              ),
+            trailing: Row(
+              children: [
+                Container(
+                  child: TextButton(
+                    child: Text('Full Article'),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(article: articlesP.articles[i])));
+                    },
+                  )
+                ),
+                Container(
+                  width: 40,
+                  height: 40,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.asset('images/${articlesP.articles[i].img}',
+                    fit: BoxFit.cover)
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey[300]),
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
 
           );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:app/pages/login.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -54,7 +54,12 @@ class _WelcomeState extends State<Welcome> {
                 width: 100,
                 margin: EdgeInsets.only(top:40),
                 child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(
+                            context,
+                            new MaterialPageRoute(builder: (context) => Login()),
+                          );
+                  },
                   child: Text('Login'),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
