@@ -14,7 +14,7 @@ class _ArticlesState extends State<Articles> with TickerProviderStateMixin{
   
   @override
   Widget build(BuildContext context) {
-
+    String base_url = '192.168.43.112:8000';
     List <AnimationController> controllers=[];
     List <Animation> readMoreAnimations=[];
 
@@ -36,6 +36,7 @@ class _ArticlesState extends State<Articles> with TickerProviderStateMixin{
         
       )
     );
+
     print(articlesP.articles);
     for (int i=0; i<articlesP.articles.length; i++){
       print(3333333333);
@@ -97,7 +98,7 @@ class _ArticlesState extends State<Articles> with TickerProviderStateMixin{
                     height: 40,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(5),
-                      child: Image.asset('images/${articlesP.articles[i].img}',
+                      child: Image(image: NetworkImage('$base_url/static/images${articlesP.articles[i].image}'),
                       fit: BoxFit.cover)
                     ),
                     decoration: BoxDecoration(
